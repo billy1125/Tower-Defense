@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("MakeTank", 0, 1);
+       // Invoke("End", 10);
     }
 
     // Update is called once per frame
@@ -22,5 +23,10 @@ public class GameManager : MonoBehaviour
     void MakeTank()
     {
         Instantiate(EnemyPrefab, StartPoint.transform.position, StartPoint.transform.rotation);
+    }
+
+    void End()
+    {
+        CancelInvoke();
     }
 }

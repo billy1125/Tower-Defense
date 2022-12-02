@@ -19,25 +19,23 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (i == checkPoints.Length) //到達最後一個簽到點，就會刪除戰車
-        {
-            Destroy(gameObject);
-        }
-        else
-        {            
-            // Vector3.MoveTowards可以讓戰車逐漸靠近目標點
-            // transform.position = Vector2.MoveTowards(p2, p1, Speed * Time.deltaTime);
-            transform.Translate(0, Speed * Time.deltaTime, 0);            
-        }
+        // Vector3.MoveTowards可以讓戰車逐漸靠近目標點
+        // transform.position = Vector2.MoveTowards(p2, p1, Speed * Time.deltaTime);
+        transform.Translate(0, Speed * Time.deltaTime, 0);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public virtual void FireWeapon()
+    {
+        //這裡沒有設計任何的攻擊方法
+    }
+
+    public virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Check Point")
           transform.rotation = Quaternion.Lerp(transform.rotation, collision.transform.rotation, Time.deltaTime * 2);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Check Point")
         {
@@ -46,7 +44,7 @@ public class EnemyController : MonoBehaviour
         }           
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet") //如果發生碰撞的物件標籤是Bullet，就產生爆炸，並且刪除自己
         {
@@ -56,6 +54,10 @@ public class EnemyController : MonoBehaviour
                 Destroy(collision.gameObject); //刪除砲彈
                 Destroy(gameObject);
             }
+        }
+        else if (collision.gameObject.tag == "Finish")
+        {
+            Destroy(gameObject);
         }
     }
 }

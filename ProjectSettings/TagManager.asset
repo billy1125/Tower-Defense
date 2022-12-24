@@ -7,7 +7,7 @@ TagManager:
   - Tank
   - Bullet
   - Check Point
-  - Wall
+  - Last Point
   layers:
   - Default
   - TransparentFX

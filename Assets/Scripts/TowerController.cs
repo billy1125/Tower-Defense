@@ -14,11 +14,14 @@ public class TowerController : MonoBehaviour
 
     private Transform target;
 
+    GameManager gameManager; //遊戲導演程式
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //另一種定時函數，你可以設定多少時間後，每一段時間重複做一件事
         InvokeRepeating("FireBullet", 0f, 1f);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void UpdateTarget() //追蹤最近的目標物
@@ -63,5 +66,11 @@ public class TowerController : MonoBehaviour
             Vector3 rotation = Quaternion.Lerp(this.transform.rotation, lookRotation, Time.deltaTime * 5).eulerAngles;
             this.transform.rotation = Quaternion.Euler(0, 0, rotation.z);
         }
+    }
+
+    void Update()
+    {
+        if (gameManager.Life <= 0)
+            CancelInvoke();
     }
 }

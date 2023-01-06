@@ -8,6 +8,9 @@ TagManager:
   - Bullet
   - Check Point
   - Last Point
+  - Tower
+  - Bullet Enemy
+  - Air Plane Check Point
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class TowerController : MonoBehaviour
 {
     public string TargetTagName; //目標物標籤名稱
     public float DetectMinDistance = 10; //最短的偵測距離
+    public GameObject ExplosionPrefab;
 
     public float Span = 1.0f;
     public float Delta = 0;
@@ -72,5 +73,14 @@ public class TowerController : MonoBehaviour
     {
         if (gameManager.Life <= 0)
             CancelInvoke();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet Enemy")
+        {
+            Instantiate(ExplosionPrefab, this.transform.position, this.transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2792079320967244587}
   - component: {fileID: 2625083017834534465}
+  - component: {fileID: 1716108154063823568}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,10 +48,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetTagName: Tank
   DetectMinDistance: 3
+  ExplosionPrefab: {fileID: 19851869008043301, guid: 061cc04bbdec0c04aac8f569912eb77a, type: 3}
   Span: 1
   Delta: 0
   FirePoint: {fileID: 5317879078798312279}
   BulletPrefab: {fileID: 1262129521668452846, guid: 393f4bc8585f86c4a8d1e94b32bffb31, type: 3}
+--- !u!58 &1716108154063823568
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514651271683761567}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!1 &5317879078798312279
 GameObject:
   m_ObjectHideFlags: 0
